@@ -1,29 +1,48 @@
 import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
 import "./App.css";
 
 function App() {
   const [color, setColor] = useState("red");
 
   return (
-    <>
-      <div style={{ backgroundColor: color }}>
-        <header>
-          <nav>
-            <h1 onClick={() => setColor("Red")}>Red</h1>
-            <h1 onClick={() => setColor("Yellow")}>Yellow</h1>
-            <h1 onClick={() => setColor("Green")}>Green</h1>
-            <h1 onClick={() => setColor("Orange")}>Orange</h1>
-            <h1 onClick={() => setColor("Violet")}>Violet</h1>
-            <h1 onClick={() => setColor("Blue")}>Blue</h1>
-            <h1 onClick={() => setColor("white")}>white</h1>
-            <h1 onClick={() => setColor("black")}>black</h1>
-            <h1 onClick={() => setColor("white")}>white</h1>
-          </nav>
-        </header>
-      </div>
-    </>
+    <div
+      style={{
+        backgroundColor: color,
+        height: "100vh",
+        textAlign: "center",
+        padding: "20px",
+      }}
+    >
+      <header>
+        <nav>
+          {[
+            "Red",
+            "Yellow",
+            "Green",
+            "Orange",
+            "Violet",
+            "Blue",
+            "White",
+            "Black",
+          ].map((col) => (
+            <h1
+              key={col}
+              style={{
+                backgroundColor: col.toLowerCase(),
+                cursor: "pointer",
+                padding: "10px",
+                margin: "5px",
+                display: "inline-block",
+                color: col === "Black" ? "white" : "black",
+              }}
+              onClick={() => setColor(col.toLowerCase())}
+            >
+              {col}
+            </h1>
+          ))}
+        </nav>
+      </header>
+    </div>
   );
 }
 
